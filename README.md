@@ -1,0 +1,168 @@
+<div align="center">
+
+<img src="https://getslatewave.com/brand/icon.png" alt="" height="64" align="middle">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://getslatewave.com/brand/wordmark-light.png">
+  <img alt="Slatewave" src="https://getslatewave.com/brand/wordmark.png" height="64" align="middle">
+</picture>
+
+# Slatewave (kitty)
+
+A Slatewave theme for [kitty](https://sw.kovidgoyal.net/kitty/) — slate foundation, teal signature. Part of the [Slatewave family](#slatewave-family) — one palette across editors, terminals, prompts, notes, and more.
+
+> _Slate below, teal above._
+
+</div>
+
+---
+
+## What it styles
+
+Slatewave for kitty ships as two files. Pick one:
+
+- **`slatewave.conf`** — palette only. Colors, cursor tint, selection, URL hover, window borders, tab bar, marks, and all 16 ANSI slots. Composes with whatever font, window, and cursor-shape settings you already have.
+- **`slatewave-full.conf`** — palette + opinionated typography. Includes `slatewave.conf`, then adds Hack Nerd Font Mono at 14pt, a non-blinking block cursor, and a fully opaque, unblurred window. Use this if you want the whole Slatewave house style in one include.
+
+The palette itself is tuned against kitty's full color schema — not just the 16 ANSI colors. It sets:
+
+- **ANSI 0–15** — mirrored from the VSCode Slatewave terminal block so `ls --color`, `git diff`, and 256-color TUIs all read identically across your editor and terminal
+- **Background** — slate `#282c34`, matching the VSCode editor background
+- **Foreground** — slate-200 `#e2e8f0`, matching the VSCode editor foreground
+- **Cursor** — teal `#5eead4` with slate-background text, so the block cursor stays legible
+- **Selection** — slate-700 `#334155` with slate-200 text, for a calm, non-competing highlight
+- **URL hover** — sky `#38bdf8`, matching link accents in the editor
+- **Window borders** — teal `#5eead4` on the focused split, slate-700 `#334155` on inactive splits, amber `#fbbf24` for the bell border
+- **macOS / Wayland titlebar** — tinted to the slate background so the chrome blends with the terminal
+- **Tab bar** — teal-on-slate for the active tab, slate-300 on the editor background for inactive, chrome `#21252b` for the bar itself (matching the VSCode activity bar)
+- **Marks** — rose / amber / sky for `mark1` / `mark2` / `mark3`, mirroring the editor's error / warning / info accents
+
+---
+
+## Installation
+
+### Palette only (`slatewave.conf`)
+
+kitty looks for theme files in `~/.config/kitty/`. The recommended pattern is to drop the theme alongside `kitty.conf` and `include` it.
+
+```sh
+mkdir -p ~/.config/kitty
+curl -fsSL https://raw.githubusercontent.com/kevinlangleyjr/kitty-slatewave/main/slatewave.conf \
+  -o ~/.config/kitty/slatewave.conf
+```
+
+Then in `~/.config/kitty/kitty.conf`:
+
+```conf
+include slatewave.conf
+```
+
+Reload with `ctrl+shift+F5` (Linux/Windows) or `cmd+ctrl+,` (macOS) — no restart needed.
+
+### Palette + typography (`slatewave-full.conf`)
+
+The full bundle assumes `slatewave.conf` lives in the same directory, includes it, then layers font / cursor / window defaults. Requires [Hack Nerd Font](https://www.nerdfonts.com/font-downloads) — specifically the Mono variant, so Nerd icons stay single-cell in `lazygit`, `btop`, and `ls`.
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/kevinlangleyjr/kitty-slatewave/main/slatewave-full.conf \
+  -o ~/.config/kitty/slatewave-full.conf
+```
+
+Then in `~/.config/kitty/kitty.conf`:
+
+```conf
+include slatewave-full.conf
+```
+
+### From a local clone
+
+```sh
+git clone https://github.com/kevinlangleyjr/kitty-slatewave
+cp kitty-slatewave/slatewave.conf      ~/.config/kitty/
+cp kitty-slatewave/slatewave-full.conf ~/.config/kitty/  # optional
+```
+
+### Inline
+
+If you'd rather not manage a separate theme file, paste the contents of [`slatewave.conf`](./slatewave.conf) directly into your `~/.config/kitty/kitty.conf` — every option is a top-level kitty config key.
+
+---
+
+## Palette
+
+Slatewave shares its palette with the companion themes. The anchor colors:
+
+| | Hex | Tailwind | Role |
+|---|---|---|---|
+| ![#282c34](https://placehold.co/20x20/282c34/282c34.png) | `#282c34` | — | **background**, inactive tab |
+| ![#21252b](https://placehold.co/20x20/21252b/21252b.png) | `#21252b` | — | tab bar |
+| ![#334155](https://placehold.co/20x20/334155/334155.png) | `#334155` | slate-700 | selection, inactive border |
+| ![#1e293b](https://placehold.co/20x20/1e293b/1e293b.png) | `#1e293b` | slate-800 | ANSI 0 (black) |
+| ![#cbd5e1](https://placehold.co/20x20/cbd5e1/cbd5e1.png) | `#cbd5e1` | slate-300 | inactive tab text |
+| ![#e2e8f0](https://placehold.co/20x20/e2e8f0/e2e8f0.png) | `#e2e8f0` | slate-200 | **foreground**, ANSI 7 (white) |
+| ![#5eead4](https://placehold.co/20x20/5eead4/5eead4.png) | `#5eead4` | teal-300 | **cursor, active tab, active border**, ANSI 2 (green) |
+| ![#99f6e4](https://placehold.co/20x20/99f6e4/99f6e4.png) | `#99f6e4` | teal-200 | ANSI 10 (bright green) |
+| ![#7dd3fc](https://placehold.co/20x20/7dd3fc/7dd3fc.png) | `#7dd3fc` | sky-300 | ANSI 12 (bright blue) |
+| ![#38bdf8](https://placehold.co/20x20/38bdf8/38bdf8.png) | `#38bdf8` | sky-400 | **url hover, mark3**, ANSI 4 (blue) |
+| ![#b388ff](https://placehold.co/20x20/b388ff/b388ff.png) | `#b388ff` | — | ANSI 5 (magenta) |
+| ![#fb7185](https://placehold.co/20x20/fb7185/fb7185.png) | `#fb7185` | rose-400 | **mark1**, ANSI 1 (red) |
+| ![#fbbf24](https://placehold.co/20x20/fbbf24/fbbf24.png) | `#fbbf24` | amber-400 | **bell border, mark2**, ANSI 11 (bright yellow) |
+
+### ANSI mapping
+
+Mirrors the `terminal.ansi*` block from [vscode-slatewave](https://github.com/kevinlangleyjr/vscode-slatewave/blob/main/themes/slatewave-color-theme.json) so shell output is consistent across editor and terminal.
+
+| Slot | Normal | Bright |
+|---|---|---|
+| Black | `#1e293b` slate-800 | `#475569` slate-600 |
+| Red | `#fb7185` rose-400 | `#ef5350` |
+| Green | `#5eead4` teal-300 | `#99f6e4` teal-200 |
+| Yellow | `#b45309` amber-700 | `#fbbf24` amber-400 |
+| Blue | `#38bdf8` sky-400 | `#7dd3fc` sky-300 |
+| Magenta | `#b388ff` | `#c4b5fd` violet-300 |
+| Cyan | `#0e7490` cyan-700 | `#67e8f9` cyan-300 |
+| White | `#e2e8f0` slate-200 | `#f1f5f9` slate-100 |
+
+---
+
+## Customize
+
+The theme file is a plain kitty config fragment — every entry is a top-level option. To override a single color without forking, put the override _after_ the `include` line in `~/.config/kitty/kitty.conf`:
+
+```conf
+include slatewave.conf
+
+# Override just the cursor
+cursor            #99f6e4
+cursor_text_color #282c34
+```
+
+Later values win in kitty's parse order, so the override takes effect without editing the theme file itself.
+
+---
+
+## Slatewave family
+
+One palette. Every tool.
+
+- **Editors** — [VSCode](https://github.com/kevinlangleyjr/vscode-slatewave) · [Neovim](https://github.com/kevinlangleyjr/neovim-slatewave) · [Helix](https://github.com/kevinlangleyjr/helix-slatewave) · [Zed](https://github.com/kevinlangleyjr/zed-slatewave) · [Sublime Text](https://github.com/kevinlangleyjr/sublime-text-slatewave) · [JetBrains](https://github.com/kevinlangleyjr/jetbrains-slatewave)
+- **Terminals** — [Alacritty](https://github.com/kevinlangleyjr/alacritty-slatewave) · [Ghostty](https://github.com/kevinlangleyjr/ghostty-slatewave) · [iTerm2](https://github.com/kevinlangleyjr/iterm2-slatewave) · [WezTerm](https://github.com/kevinlangleyjr/wezterm-slatewave) · [Windows Terminal](https://github.com/kevinlangleyjr/windows-terminal-slatewave)
+- **Prompts** — [Oh My Posh](https://github.com/kevinlangleyjr/slatewave-omp) · [Starship](https://github.com/kevinlangleyjr/starship-slatewave)
+- **Multiplexer** — [tmux](https://github.com/kevinlangleyjr/tmux-slatewave)
+- **CLI** — [LSD](https://github.com/kevinlangleyjr/lsd-slatewave)
+- **Notes** — [Obsidian](https://github.com/kevinlangleyjr/obsidian-slatewave) · [Logseq](https://github.com/kevinlangleyjr/logseq-slatewave) · [MarkEdit](https://github.com/kevinlangleyjr/markedit-slatewave)
+- **Launchers** — [Alfred](https://github.com/kevinlangleyjr/alfred-slatewave) · [Raycast](https://github.com/kevinlangleyjr/raycast-slatewave)
+- **Chat** — [Slack](https://github.com/kevinlangleyjr/slack-slatewave)
+
+See [getslatewave.com](https://getslatewave.com) for the full family.
+
+---
+
+## Contributing
+
+Issues and PRs welcome. For palette changes, include a before/after screenshot of the same terminal session (`ls --color`, `git diff`, a TUI like `lazygit` or `btop`) so the visual tradeoff is obvious.
+
+---
+
+## License
+
+WTFPL — Do What The Fuck You Want To Public License. See [LICENSE](LICENSE).
