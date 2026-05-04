@@ -40,9 +40,39 @@ The palette itself is tuned against kitty's full color schema — not just the 1
 
 ## Installation
 
-### Palette only (`slatewave.conf`)
+### With the Slatewave CLI (recommended)
 
-kitty looks for theme files in `~/.config/kitty/`. The recommended pattern is to drop the theme alongside `kitty.conf` and `include` it.
+```sh
+brew tap kevinlangleyjr/slatewave
+brew install slatewave
+slatewave install kitty
+```
+
+Installs the full bundle (palette + Hack Nerd Font Mono + block cursor + opaque window), drops both theme files into `~/.config/kitty/`, and adds `include slatewave-full.conf` to your `kitty.conf`. Reload with `cmd+ctrl+,` (macOS) or `ctrl+shift+F5` (Linux/Windows). To remove cleanly: `slatewave uninstall kitty`.
+
+### Manual — palette + typography (`slatewave-full.conf`)
+
+The full bundle includes `slatewave.conf` and layers font / cursor / window defaults on top, so **you need both files** in the same directory. Requires [Hack Nerd Font](https://www.nerdfonts.com/font-downloads) — specifically the Mono variant, so Nerd icons stay single-cell in `lazygit`, `btop`, and `ls`.
+
+```sh
+mkdir -p ~/.config/kitty
+curl -fsSL https://raw.githubusercontent.com/kevinlangleyjr/kitty-slatewave/main/slatewave-full.conf \
+  -o ~/.config/kitty/slatewave-full.conf
+curl -fsSL https://raw.githubusercontent.com/kevinlangleyjr/kitty-slatewave/main/slatewave.conf \
+  -o ~/.config/kitty/slatewave.conf
+```
+
+Then in `~/.config/kitty/kitty.conf`:
+
+```conf
+include slatewave-full.conf
+```
+
+Reload with `cmd+ctrl+,` (macOS) or `ctrl+shift+F5` (Linux/Windows) — no restart needed.
+
+### Manual — palette only (`slatewave.conf`)
+
+If you don't want the typography opinions and just want the colors, drop only the base palette:
 
 ```sh
 mkdir -p ~/.config/kitty
@@ -54,23 +84,6 @@ Then in `~/.config/kitty/kitty.conf`:
 
 ```conf
 include slatewave.conf
-```
-
-Reload with `ctrl+shift+F5` (Linux/Windows) or `cmd+ctrl+,` (macOS) — no restart needed.
-
-### Palette + typography (`slatewave-full.conf`)
-
-The full bundle assumes `slatewave.conf` lives in the same directory, includes it, then layers font / cursor / window defaults. Requires [Hack Nerd Font](https://www.nerdfonts.com/font-downloads) — specifically the Mono variant, so Nerd icons stay single-cell in `lazygit`, `btop`, and `ls`.
-
-```sh
-curl -fsSL https://raw.githubusercontent.com/kevinlangleyjr/kitty-slatewave/main/slatewave-full.conf \
-  -o ~/.config/kitty/slatewave-full.conf
-```
-
-Then in `~/.config/kitty/kitty.conf`:
-
-```conf
-include slatewave-full.conf
 ```
 
 ### From a local clone
