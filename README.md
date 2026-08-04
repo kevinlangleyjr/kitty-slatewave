@@ -31,7 +31,7 @@ The palette itself is tuned against kitty's full color schema — not just the 1
 - **Cursor** — teal `#5eead4` with slate-background text, so the block cursor stays legible
 - **Selection** — slate-700 `#334155` with slate-200 text, for a calm, non-competing highlight
 - **URL hover** — sky `#38bdf8`, matching link accents in the editor
-- **Window borders** — teal `#5eead4` on the focused split, slate-700 `#334155` on inactive splits, amber `#fbbf24` for the bell border
+- **Window borders** — teal `#5eead4` on the focused split, slate-700 `#334155` on inactive splits, amber `#fcd34d` for the bell border
 - **macOS / Wayland titlebar** — tinted to the slate background so the chrome blends with the terminal
 - **Tab bar** — teal-on-slate for the active tab, slate-300 on the editor background for inactive, chrome `#21252b` for the bar itself (matching the VSCode activity bar)
 - **Marks** — rose / amber / sky for `mark1` / `mark2` / `mark3`, mirroring the editor's error / warning / info accents
@@ -118,7 +118,8 @@ Slatewave shares its palette with the companion themes. The anchor colors:
 | ![#38bdf8](https://placehold.co/20x20/38bdf8/38bdf8.png) | `#38bdf8` | sky-400 | **url hover, mark3**, ANSI 4 (blue) |
 | ![#b388ff](https://placehold.co/20x20/b388ff/b388ff.png) | `#b388ff` | — | ANSI 5 (magenta) |
 | ![#fb7185](https://placehold.co/20x20/fb7185/fb7185.png) | `#fb7185` | rose-400 | **mark1**, ANSI 1 (red) |
-| ![#fbbf24](https://placehold.co/20x20/fbbf24/fbbf24.png) | `#fbbf24` | amber-400 | **bell border, mark2**, ANSI 11 (bright yellow) |
+| ![#f59e0b](https://placehold.co/20x20/f59e0b/f59e0b.png) | `#f59e0b` | amber-500 | ANSI 3 (yellow) |
+| ![#fcd34d](https://placehold.co/20x20/fcd34d/fcd34d.png) | `#fcd34d` | amber-300 | **bell border, mark2**, ANSI 11 (bright yellow) |
 
 ### ANSI mapping
 
@@ -129,7 +130,7 @@ Mirrors the `terminal.ansi*` block from [vscode-slatewave](https://github.com/ke
 | Black | `#1e293b` slate-800 | `#475569` slate-600 |
 | Red | `#fb7185` rose-400 | `#ef5350` |
 | Green | `#5eead4` teal-300 | `#99f6e4` teal-200 |
-| Yellow | `#b45309` amber-700 | `#fbbf24` amber-400 |
+| Yellow | `#f59e0b` amber-500 | `#fcd34d` amber-300 |
 | Blue | `#38bdf8` sky-400 | `#7dd3fc` sky-300 |
 | Magenta | `#b388ff` | `#c4b5fd` violet-300 |
 | Cyan | `#0e7490` cyan-700 | `#67e8f9` cyan-300 |
